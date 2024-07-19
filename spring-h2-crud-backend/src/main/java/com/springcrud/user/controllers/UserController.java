@@ -60,9 +60,14 @@ public class UserController {
 	}
 
 	@PostMapping(path = "/users", consumes = "application/json")
-	@ResponseStatus(code = HttpStatus.CREATED)
-	public User postUser(@RequestBody User user) {
-		return userRepo.save(user);
+	public ResponseEntity<User> postUser(@RequestBody User user) {
+		try {
+			userRepo.save(user);
+			return new ResponseEntity<>(null, HttpStatus.CREATED);
+		}
+		catch (Exception e){
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 
 	@PutMapping(path = "/users/{id}/put", consumes = "application/json")
@@ -74,8 +79,8 @@ public class UserController {
 				existingUser.setName(user.getName());
 				existingUser.setEmail(user.getEmail());
 
-				User userUpdated = userRepo.save(existingUser);
-				return new ResponseEntity<>(userUpdated, HttpStatus.OK);
+				userRepo.save(existingUser);
+				return new ResponseEntity<>(null, HttpStatus.OK);
 			} else {
 				return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 			}

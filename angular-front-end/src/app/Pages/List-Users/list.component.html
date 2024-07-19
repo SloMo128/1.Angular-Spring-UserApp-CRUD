@@ -9,31 +9,32 @@
   </div>
 </div>
 
-<table class="table table-bordered">
-  <thead class="thead-dark">
-    <tr>
-      <th>#</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th class="text-center">Update</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let users of users let i = index">
-      <td>{{users.id}}</td>
-      <td>{{users.name}}</td>
-      <td>{{users.email}}</td>
-      
-      <td class="text-center">
-        <button type="submit" (click)="saveDataAndNavigate(users.id)" style="background-color:rgb(22, 218, 22)"
-          class="btn btn-success">
-          <img src="assets\img\edit.png" Style="width:30px;height:30px" />
-        </button>
 
-        <button type="submit" (click)="deleteUser(users.id, i)" style="background-color:red" class="btn btn-danger">
-          <img src="assets\img\delete.png" Style="width:30px;height:30px" />
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th class="text-center">Update</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let users of users let i = index">
+        <td>{{users.id}}</td>
+        <td>{{users.name}}</td>
+        <td>{{users.email}}</td>
+
+        <td class="text-center">
+          <button type="submit" (click)="saveDataAndNavigate(users.id)" style="background-color:rgb(22, 218, 22)"
+            class="btn btn-success">
+            <img src="assets\img\edit.png" Style="width:30px;height:30px" />
+          </button>
+
+          <button type="submit" (click)="deleteUser(users.id, i)" style="background-color:red" class="btn btn-danger">
+            <img src="assets\img\delete.png" Style="width:30px;height:30px" />
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
